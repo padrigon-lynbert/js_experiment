@@ -1,19 +1,17 @@
-const title = document.querySelector('#title');
-const btn = document.querySelector('#btn');
-const input = document.querySelector('#nameInput');
-const showBtn = document.querySelector('#showbtn');
-const load = document.querySelector('#load');
+const search = document.querySelector('#search');
+const results = document.querySelector('#results');
 
-btn.addEventListener('click', function () {
-    title.textContent = "button clicked";
-});
+const items = ["apple","banana","carrot","orange","grape","melon"];
 
-showBtn.addEventListener('click', function () {
-    title.textContent = input.value;
-});
+search.addEventListener('input', () => {
+    const term = search.value.toLowerCase();
+    results.innerHTML = "";
 
-load.addEventListener('click', async function () {
-    const res = await fetch('/api/hello/');
-    const data = await res.json();
-    title.textContent = data.message;
+    items
+        .filter(x => x.includes(term))
+        .forEach(x => {
+            const li = document.createElement('li');
+            li.textContent = x;
+            results.appendChild(li);
+        });
 });
