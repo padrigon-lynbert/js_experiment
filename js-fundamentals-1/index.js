@@ -1,10 +1,13 @@
 
-const el = document.querySelector('#title');
+const title = document.querySelector('#title');
 const btn = document.querySelector('#btn');
+const input = document.querySelector('#nameInput');
+const showBtn = document.querySelector('#showbtn');
 
 btn.addEventListener('click', function() {
-    el.textContent = 'clicked';    
+    title.textContent = "button clicked";    
 });
 
-console.log(el);
-
+showBtn.addEventListener('click', function() {
+    title.textContent = input.value;
+});
